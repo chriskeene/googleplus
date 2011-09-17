@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google+ text browser</title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="ajaxgoogleplus.js" ></script>	
+	
+	<style>
+	#largebox {
+		width : 800px;
+		height : 400px;
+		position : absolute;
+		top : 50px;
+		lleft : 30px;
+		background-color : #D9D7D7;
+		display:none;
+		margin-left : auto;
+		margin-right : auto;
+		padding : 30px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+	}
+	
+	.bottomtext {
+		position:absolute; bottom:0;
+	}
+	
+	#windowbottom {
+		position:absolute; bottom:0;
+	}
+	</style>
+	
+	</head>
+<body>
+	<h1>Google+ browser</h1>
+	<img src="" id="imggoogle" style="float:right;">
+	
+
+	
+
+	
+	<!-- for googleplus profile... -->
+	<ul id="googleplusprofile">
+		
+	</ul>
+		
+		<h3 id="plusactivitytitle">Activity</h3>
+	<ol start="0" id="googleplusactivity">
+			
+	</ol>
+		
+	<p id="json"></p>
+	
+	<div id="largebox"> </div>
+	
+	<div id="windowbottom">[ 1-9 show item | n = next 10 | more...]</div>
+	
+	</body>
+	</html>
