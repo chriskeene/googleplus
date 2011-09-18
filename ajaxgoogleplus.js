@@ -1,6 +1,6 @@
 var googleplus = {
 	//a
-	mirror : 'http://www.nostuff.org/googleplus/prx.php?url=',
+	mirror : 'http://www.nostuff.org/googleplus/prox.php?url=',
 	googleplusbase : 'https://www.googleapis.com/plus/v1/',
 	googleplusapikey : 'AIzaSyAf5DQCkpscKYOhdwrl71e-AaETA0ensNo',
 	personid : '113029570517600774893',
@@ -13,11 +13,11 @@ var printgoogleprofile = function() {
 	var url = googleplus.mirror + googleplus.googleplusbase + 'people/' + googleplus.personid + '?key=' + googleplus.googleplusapikey;
 	$.getJSON(url, function(data) {
 		//data = data.contents;
-		$('ul').append('<li>Name: ' + data.displayName + '</li>');
-		$('ul').append('<li>Gender: ' + data.gender + '</li>');
-		$('ul').append('<li>Google+ Id: ' + data.id + '</li>');
-		$('#imggoogle').attr('src', data.image.url);
-		$('#json').append(data);
+		$('ul').append('<li>Name: ' + data.contents.displayName + '</li>');
+		$('ul').append('<li>Gender: ' + data.contents.gender + '</li>');
+		$('ul').append('<li>Google+ Id: ' + data.contents.id + '</li>');
+		$('#imggoogle').attr('src', data.contents.image.url);
+		//$('#json').append(data);
 	});
 }
 
@@ -33,14 +33,13 @@ var showgoogleactivity = function() {
 		url = url + nextPageUrl;
 	}
 	$.getJSON(url, function(data) {
-		//data = data.contents;
-		googleactivity = data;
+		googleactivity = data.contents;
 		// print title
-		$('#plusactivitytitle').html(data.title);
+		$('#plusactivitytitle').html(data.contents.title);
 		$('#googleplusactivity').html('');
-		for (i in data.items) {
-			$('#googleplusactivity').append('<li>' + data.items[i]['title'] + '</li>');
-			googlepluslist[i] = data.items[i]['id'];
+		for (i in data.contents.items) {
+			$('#googleplusactivity').append('<li>' + data.contents.items[i]['title'] + '</li>');
+			googlepluslist[i] = data.contents.items[i]['id'];
 		}	
 	});
 }
@@ -61,12 +60,10 @@ var showitemdetail = function(id) {
 
 
 $(function() {
-	
 	// show basics
 	printgoogleprofile();
 	showgoogleactivity();
 	
-
 	$(document).keyup(function(event) {
 		//
 		var character = String.fromCharCode(event.keyCode).toLowerCase();
